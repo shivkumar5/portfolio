@@ -31,7 +31,9 @@ import {
   Monitor, // For data dashboard
   Shield, // For security/authentication (JWT)
   Users, // For collaboration/teams
-  Twitter, // For X (formerly Twitter)
+  Twitter,
+  Menu,
+  X, // For X (formerly Twitter)
 } from 'lucide-react';
 
 // Data from the provided resume
@@ -338,6 +340,16 @@ function App() {
   const toggleExpand = (companyId) => {
     setExpandedCompany(expandedCompany === companyId ? null : companyId);
   };
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
+
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   // Basic error handler for images
   const handleImageError = (e) => {
@@ -349,22 +361,47 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 shadow-lg">
+      <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 shadow-lg sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold">{yourName}</h1>
-            <p className="text-xl opacity-90">{yourTitle}</p>
+            <p className="text-xl opacity-90 hidden md:block">{yourTitle}</p> {/* Hide title on mobile */}
           </div>
-          {/* Navigation (Optional - add if needed) */}
-          <nav>
-            <ul className="flex space-x-4">
-              <li><a href="#about" className="hover:underline">About</a></li>
-              <li><a href="#experience" className="hover:underline">Experience</a></li>
-              <li><a href="#skills" className="hover:underline">Skills</a></li>
-              <li><a href="#contact" className="hover:underline">Contact</a></li>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:block">
+            <ul className="flex space-x-6">
+              <li><a href="#about" className="hover:underline text-lg">About</a></li>
+              <li><a href="#experience" className="hover:underline text-lg">Experience</a></li>
+              <li><a href="#skills" className="hover:underline text-lg">Skills</a></li>
+              <li><a href="#contact" className="hover:underline text-lg">Contact</a></li>
             </ul>
           </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
+              {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Overlay */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden fixed inset-0 bg-blue-600 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8">
+            <button onClick={toggleMobileMenu} className="absolute top-4 right-4 text-white focus:outline-none">
+              <X size={30} />
+            </button>
+            <nav>
+              <ul className="flex flex-col items-center space-y-6">
+                <li><a href="#about" className="text-white text-2xl hover:underline" onClick={closeMobileMenu}>About</a></li>
+                <li><a href="#experience" className="text-white text-2xl hover:underline" onClick={closeMobileMenu}>Experience</a></li>
+                <li><a href="#skills" className="text-white text-2xl hover:underline" onClick={closeMobileMenu}>Skills</a></li>
+                <li><a href="#contact" className="text-white text-2xl hover:underline" onClick={closeMobileMenu}>Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* About Me Section */}
