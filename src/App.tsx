@@ -15,7 +15,7 @@ function App() {
 
   // Keyboard navigation logic
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    if ((e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) && e.target.id !== 'terminal-input') return;
     const sectionsList = ['hero', 'about', 'experience', 'skills', 'education', 'articles', 'contact'];
 
     // Find current active section based on scroll position
@@ -84,17 +84,25 @@ function App() {
 
         return prev;
       });
-    } else if (e.key === 'Backspace') {
-      setCurrentCommand(prev => prev.slice(0, -1));
-    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      if (e.key === ' ') e.preventDefault(); // prevent scroll
-      setCurrentCommand(prev => (prev === 'idle' ? '' : prev) + e.key);
     }
   }, []);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+
+    // Auto-focus terminal input on keydown if no other input is active
+    const focusTerminal = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key.length === 1 && (!e.ctrlKey && !e.metaKey && !e.altKey)) {
+        document.getElementById('terminal-input')?.focus();
+      }
+    };
+    window.addEventListener('keydown', focusTerminal);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', focusTerminal);
+    };
   }, [handleKeyDown]);
 
   // Intersection Observer for scroll animations
@@ -135,7 +143,7 @@ function App() {
         <p>Designed & Engineered by <span>Shiv Kumar</span> &copy; { new Date().getFullYear() }</p>
       </footer>
 
-      <div className="terminal-footer">
+      <div className="terminal-footer" onClick={ () => document.getElementById('terminal-input')?.focus() }>
         { currentCommand.startsWith('cd ') && (
           <div className="terminal-suggestions">
             { ['hero', 'about', 'experience', 'skills', 'education', 'articles', 'contact']
@@ -145,9 +153,34 @@ function App() {
               )) }
           </div>
         ) }
-        <span className="prompt">shiv@macbook:~$</span>
-        <span className="typing">{ currentCommand === 'idle' ? '' : currentCommand }</span>
-        <span className="cursor"></span>
+        <span className="prompt">shiv@profile:~$</span>
+        <div style={ { display: 'flex', flex: 1, alignItems: 'center', position: 'relative', cursor: 'text' } }>
+          <span className="typing">{ currentCommand === 'idle' ? '' : currentCommand }</span>
+          <span className="cursor"></span>
+          <input
+            id="terminal-input"
+            type="text"
+            value={ currentCommand === 'idle' ? '' : currentCommand }
+            onChange={ (e) => setCurrentCommand(e.target.value) }
+            style={ {
+              position: 'absolute',
+              opacity: 0,
+              left: 0,
+              top: 0,
+              width: '100%',
+              height: '100%',
+              cursor: 'text',
+              border: 'none',
+              outline: 'none',
+              background: 'transparent',
+              color: 'transparent'
+            } }
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="none"
+            spellCheck="false"
+          />
+        </div>
       </div>
     </div>
   );
