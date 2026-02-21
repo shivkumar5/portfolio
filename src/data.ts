@@ -1,3 +1,10 @@
+import avathonLogo from './assets/avathonai_logo.jpeg';
+import finboxLogo from './assets/finbox_logo.jpeg';
+import entropikLogo from './assets/entropik_logo.jpeg';
+import zeniusLogo from './assets/zenius_logo.jpeg';
+import poshmarkLogo from './assets/poshmark_logo.png';
+import tcsLogo from './assets/tcs_logo.png';
+
 export const MY_DATA = {
     name: "Shiv Kumar",
     title: "Staff Software Engineer",
@@ -21,7 +28,7 @@ export const MY_DATA = {
     experience: [
         {
             company: "Avathon",
-            logo: "https://logo.clearbit.com/avathon.com",
+            logo: avathonLogo,
             title: "Staff Software Engineer",
             duration: "Oct 2025 - Present",
             location: "Bengaluru, Karnataka, India",
@@ -36,7 +43,7 @@ export const MY_DATA = {
         },
         {
             company: "FinBox",
-            logo: "https://logo.clearbit.com/finbox.in",
+            logo: finboxLogo,
             title: "Senior Software Engineer",
             duration: "Jun 2025 - Oct 2025",
             location: "Bengaluru, Karnataka, India",
@@ -44,7 +51,7 @@ export const MY_DATA = {
         },
         {
             company: "Entropik",
-            logo: "https://logo.clearbit.com/entropik.io",
+            logo: entropikLogo,
             title: "Senior Software Development Engineer",
             duration: "Apr 2023 - Aug 2025",
             location: "Bengaluru, Karnataka, India",
@@ -58,7 +65,7 @@ export const MY_DATA = {
         },
         {
             company: "Zenius",
-            logo: "https://logo.clearbit.com/zenius.net",
+            logo: zeniusLogo,
             title: "Senior Software Development Engineer",
             duration: "Aug 2021 - Apr 2023",
             location: "Bengaluru",
@@ -70,7 +77,7 @@ export const MY_DATA = {
         },
         {
             company: "Poshmark",
-            logo: "https://logo.clearbit.com/poshmark.com",
+            logo: poshmarkLogo,
             title: "Software Engineer II, Web Applications / SDE I",
             duration: "Sep 2019 - Aug 2021",
             location: "Chennai, Tamil Nadu, India",
@@ -82,7 +89,7 @@ export const MY_DATA = {
         },
         {
             company: "Tata Consultancy Services",
-            logo: "https://logo.clearbit.com/tcs.com",
+            logo: tcsLogo,
             title: "Assistant System Engineer (Full Stack Developer)",
             duration: "Jul 2018 - Sep 2019",
             location: "Chennai Area, India",
@@ -104,6 +111,50 @@ export const MY_DATA = {
             logo: "",
             degree: "+2, Science",
             year: "2011 - 2013"
+        }
+    ],
+    articles: [
+        {
+            title: "Building A Privacy-First AI Assistant That Lives on Your Machine",
+            link: "https://theshiva5.medium.com/building-a-privacy-first-ai-assistant-that-lives-on-your-machine-8e56bfaedcd3",
+            date: "Feb 3, 2026",
+            subtitle: "Over the last few weeks, social media has been buzzing with tools like ClawdBot...",
+            image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Fp9pdYX4QBl1BGcrccWvbQ.png"
+        },
+        {
+            title: "Kanban Board API Part 2: State Machines, Activity Logging, and Real-Time Updates",
+            link: "https://theshiva5.medium.com/kanban-board-api-part-2-state-machines-activity-logging-and-real-time-updates-69b2fe3879c8",
+            date: "Jan 11, 2026",
+            subtitle: "In the last part, we set up the basics of the Kanban board API with User, Task, Status...",
+            image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*qE3OFV0ayxhr0C5Y"
+        },
+        {
+            title: "Building a Foundation: My Journey Setting Up a Kanban Backend with Spring Boot",
+            link: "https://theshiva5.medium.com/building-a-foundation-my-journey-setting-up-a-kanban-backend-with-spring-boot-02f4f10fe503",
+            date: "Jan 4, 2026",
+            subtitle: "Getting Started with Spring Boot",
+            image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*xT40gvJrLnKhmxmq"
+        },
+        {
+            title: "The Day Your Perfect Website Broke: An Introduction to CSS Logical Properties",
+            link: "https://theshiva5.medium.com/the-day-your-perfect-website-broke-an-introduction-to-css-logical-properties-29013586ae3f",
+            date: "Sep 14, 2025",
+            subtitle: "The Day Your Perfect Website Broke: An Introduction to CSS Logical Properties",
+            image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*sCoyIAgbvxaboqRB2dRyWQ.png"
+        },
+        {
+            title: "Javascript Memory Management - Why should we care about memory?",
+            link: "https://theshiva5.medium.com/javascript-memory-management-why-should-we-care-about-memory-795e29054ed4",
+            date: "Apr 5, 2021",
+            subtitle: "As a Javascript developer, often we focus on writing more and more code and getting this done as soon as possible...",
+            image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*XyRTt9m1w7vxOt2S"
+        },
+        {
+            title: "Does const and let hoist in Javascript?",
+            link: "https://theshiva5.medium.com/does-const-and-let-hoist-in-javascript-b0c4bcef32ea",
+            date: "Mar 6, 2021",
+            subtitle: "In this article, I am going to discuss javascript hoisting and will be busting some of the myths regarding it.",
+            image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*rZRQfdqKDtcUUD9_"
         }
     ]
 };
