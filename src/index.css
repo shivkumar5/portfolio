@@ -138,7 +138,7 @@ a:focus {
 }
 
 .section-title::before {
-  content: "shiv@macbook:~$ ./";
+  content: "shiv@profile:~$ ./";
   color: var(--primary);
   font-weight: bold;
 }
