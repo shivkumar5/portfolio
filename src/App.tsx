@@ -12,7 +12,6 @@ import './index.css';
 
 function App() {
   const [currentCommand, setCurrentCommand] = useState('idle');
-  const [tabIndex, setTabIndex] = useState(-1);
 
   // Keyboard navigation logic
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -42,7 +41,6 @@ function App() {
       document.getElementById(prevId)?.scrollIntoView({ behavior: 'smooth' });
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      setTabIndex(-1);
       setCurrentCommand(prev => {
         const cmd = prev.trim();
         if (cmd.startsWith('cd ')) {
@@ -87,11 +85,9 @@ function App() {
         return prev;
       });
     } else if (e.key === 'Backspace') {
-      setTabIndex(-1);
       setCurrentCommand(prev => prev.slice(0, -1));
     } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
       if (e.key === ' ') e.preventDefault(); // prevent scroll
-      setTabIndex(-1);
       setCurrentCommand(prev => (prev === 'idle' ? '' : prev) + e.key);
     }
   }, []);
