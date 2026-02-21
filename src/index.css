@@ -493,6 +493,28 @@ img:hover {
   vertical-align: middle;
 }
 
+.terminal-suggestions {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: var(--bg-accent);
+  border: 1px dashed var(--border-color);
+  border-bottom: none;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.suggestion {
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.suggestion::before {
+  content: "📂 ";
+}
+
 .footer {
   text-align: center;
   padding: 2rem 0 4rem;
