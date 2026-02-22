@@ -14,7 +14,7 @@ export const MY_DATA = {
     links: {
         linkedin: "https://www.linkedin.com/in/shivkumar-201415",
         portfolio: "https://theshiva.tech",
-        twitter: "https://x.com/ShivKumar_0511",
+        twitter: "https://x.com/theshiv_tech",
         github: "https://github.com/shivkumar5",
         medium: "https://medium.com/@theshiva5"
     },
